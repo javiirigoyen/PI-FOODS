@@ -13,8 +13,9 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const urlApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=91bb058f06c64a4a99fd166c25420e7a&addRecipeInformation=true`)
-    const apiInfo = await urlApi.results.map(e => {
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=91bb058f06c64a4a99fd166c25420e7a&addRecipeInformation=true&number=100")
+    console.log(urlApi.length)
+    const apiInfo = urlApi.data.results.map(e => {
        
         return {
             name: e.title,
@@ -23,7 +24,7 @@ const getApiInfo = async () => {
             image: e.image,
             healthScore: e.healthScore,
             spoonacularScore: e.spoonacularScore,
-            steps: e.steps.map(e => e)
+            steps: e.analyzedInstructions.length?e.analyzedInstructions[0].steps.map(e => e.step) : []
 
         }
     })
@@ -32,7 +33,7 @@ const getApiInfo = async () => {
 }
 
 const getDbInfo = async () => {
-    return await Recipe.findALL({
+    return await Recipe.findAll({
         include: {
             model: Diets,
             attributes: ["name"],
@@ -62,5 +63,10 @@ router.get("/recipes", async (req, res) => {
         res.status(200).send(recipesAll)
     }
 })
+
+
+
+
+
 
 module.exports = router;

@@ -18,11 +18,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    punctuation: {
+    spoonacularScore: {
       type: DataTypes.INTEGER,
       
     },
-    healthyFoodLevel: {
+    healthScore: {
       type: DataTypes.INTEGER,
       
     },
