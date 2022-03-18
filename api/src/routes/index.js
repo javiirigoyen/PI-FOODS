@@ -64,9 +64,28 @@ router.get("/recipes", async (req, res) => {
     }
 })
 
+router.get("/types", async (req, res) => {
+    const diets = [
+        "vegetarian",
+        "vegan" ,
+        "gluten free",
+        "dairy free",
+        "lacto ovo vegetarian",
+        "paleolithic",
+        "primal",
+        "pescatarian",
+        "fodmap friendly",
+        "whole 30",
+        "ketogenic",
+    ]
+    diets.forEach((e) => {
+        Diets.findOrCreate({
+            where: { name : e }
+        })
+    })
 
-
-
-
+    const allTypes = await Diets.findAll()
+    res.send(allTypes)
+})
 
 module.exports = router;
