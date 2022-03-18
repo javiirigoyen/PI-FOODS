@@ -18,7 +18,7 @@ const getApiInfo = async () => {
     const apiInfo = urlApi.data.results.map(e => {
        
         return {
-            name: e.title,
+            title: e.title,
             id : e.id,
             summary: e.summary,
             image: e.image,
@@ -84,8 +84,44 @@ router.get("/types", async (req, res) => {
         })
     })
 
-    const allTypes = await Diets.findAll()
-    res.send(allTypes)
+    const allDiets = await Diets.findAll()
+    res.send(allDiets)
 })
+
+router.post("/recipe", async (req, res) => {
+    const {
+
+       title,
+       summary,
+       image,
+       healthScore,
+       spoonacularScore,
+       steps,
+       createInDb,
+       diets,
+
+      } = req.body
+
+      const recipeCreated = await Recipe.create({
+
+        title,
+        summary,
+        image,
+        healthScore,
+        spoonacularScore,
+        steps,
+        createInDb,
+
+        })
+
+        const dietsDb = await Diets.findAll({
+             where: { title : diets} 
+            })
+       
+        recipeCreated.addDiets(dietsDb)
+        res.send("recipe created successfully!")
+})
+
+
 
 module.exports = router;
