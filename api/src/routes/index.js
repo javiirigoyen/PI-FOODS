@@ -13,8 +13,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=91bb058f06c64a4a99fd166c25420e7a&addRecipeInformation=true&number=100")
-    console.log(urlApi.length)
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=18bd199b08f348b496399f6830ba7935&addRecipeInformation=true&number=100")
     const apiInfo = urlApi.data.results.map(e => {
        
         return {
@@ -33,34 +32,39 @@ const getApiInfo = async () => {
 }
 
 const getDbInfo = async () => {
-    return await Recipe.findAll({
+    const db = await Recipe.findAll({
         include: {
             model: Diets,
             attributes: ["name"],
-            trough: {
-                attributes: [],
-            },
+            
         }
     })
+    
+    
+    return db
 }
 
 const getAllRecipes = async () => {
     const apiInfos = await getApiInfo()
     const dbInfos = await getDbInfo()
-    const allInfo = apiInfos.concat(dbInfos)
+    const allInfo = apiInfos.concat(dbInfos) 
     return allInfo
 }
 
 router.get("/recipes", async (req, res) => {
+    
     const name = req.query.name
     let recipesAll = await getAllRecipes()
+   
     if(name) {
+        console.log("asdasddas")
         let recipesName = await recipesAll.filter(e => e.title.toLowerCase().includes(name.toLowerCase))
         recipesName.length ? 
         res.status(200).send(recipesName) : 
         res.status(404).send("no recipes found")
     } else {
-        res.status(200).send(recipesAll)
+       
+        res.status(200).json(recipesAll)
     }
 })
 
@@ -88,7 +92,7 @@ router.get("/types", async (req, res) => {
     res.send(allDiets)
 })
 
-router.post("/recipe", async (req, res) => {
+ router.post("/recipe", async (req, res) => {
     const {
 
        title,
@@ -122,6 +126,16 @@ router.post("/recipe", async (req, res) => {
         res.send("recipe created successfully!")
 })
 
-
+router.get("/recipes/:id", async (req, res) => {
+    const id = req.params.id
+    const recipesTotal = await getAllRecipes()
+        if(id) {
+            let recipeId = await recipesTotal.filter(e => e.id == id) 
+            recipeId.length ?
+            res.status(200).json(recipeId) :
+            res.status(404).send("recipe not found!")
+        }
+        }) 
+ 
 
 module.exports = router;
