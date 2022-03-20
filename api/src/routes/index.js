@@ -36,13 +36,13 @@ const getDbInfo = async () => {
     return await Recipe.findAll({
         include: {
             model: Diets,
-            attributes: ["name"],
+            attributes: ["title"],
             
         }
     })
     
     
-    return db
+    
 }
 
 const getAllRecipes = async () => {
@@ -109,18 +109,12 @@ router.get("/types", async (req, res) => {
         
     })
 
-    if(diets) {
-    const dietsDb = await Diets.findAll({
-    where: { name: diets} 
+     await recipeCreated.addDiets(diets)
+    return res.status(200).send("recipe created successfully!")
+
+
 })
 
-        await recipeCreated.addDiets(dietsDb)
-        return res.status(200).send("recipe created successfully!")
-} else {
-    return res.status(200).send("recipe not found")
-
-}
-})
 
 router.get("/recipes/:id", async (req, res) => {
     const id = req.params.id
