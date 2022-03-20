@@ -7,13 +7,14 @@ const {Diets, Recipe} = require("../db")
 
 
 
-const router = Router();
 
+const router = Router();
+//
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=18bd199b08f348b496399f6830ba7935&addRecipeInformation=true&number=100")
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=91bb058f06c64a4a99fd166c25420e7a&addRecipeInformation=true&number=100")
     const apiInfo = urlApi.data.results.map(e => {
        
         return {
@@ -32,7 +33,7 @@ const getApiInfo = async () => {
 }
 
 const getDbInfo = async () => {
-    const db = await Recipe.findAll({
+    return await Recipe.findAll({
         include: {
             model: Diets,
             attributes: ["name"],
@@ -84,7 +85,7 @@ router.get("/types", async (req, res) => {
     ]
     diets.forEach((e) => {
         Diets.findOrCreate({
-            where: { name : e }
+            where: { title : e }
         })
     })
 
@@ -93,21 +94,11 @@ router.get("/types", async (req, res) => {
 })
 
  router.post("/recipe", async (req, res) => {
-    const {
+    const { title, summary, image, healthScore, spoonacularScore, steps, createInDb, diets, } = req.body
 
-       title,
-       summary,
-       image,
-       healthScore,
-       spoonacularScore,
-       steps,
-       createInDb,
-       diets,
-
-      } = req.body
-
-      const recipeCreated = await Recipe.create({
-
+    
+    const recipeCreated = await Recipe.create({
+        
         title,
         summary,
         image,
@@ -115,15 +106,20 @@ router.get("/types", async (req, res) => {
         spoonacularScore,
         steps,
         createInDb,
+        
+    })
 
-        })
+    if(diets) {
+    const dietsDb = await Diets.findAll({
+    where: { name: diets} 
+})
 
-        const dietsDb = await Diets.findAll({
-             where: { title : diets} 
-            })
-       
-        recipeCreated.addDiets(dietsDb)
-        res.send("recipe created successfully!")
+        await recipeCreated.addDiets(dietsDb)
+        return res.status(200).send("recipe created successfully!")
+} else {
+    return res.status(200).send("recipe not found")
+
+}
 })
 
 router.get("/recipes/:id", async (req, res) => {
