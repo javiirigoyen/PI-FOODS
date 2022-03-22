@@ -26,6 +26,28 @@ export default function Home () {
             <button onClick={e => {handleClick(e)}}>
                 Reload all recipes
             </button>
+       <div>
+        <select>
+            {/* <option value = "">Filter Alphabetically</option> */}
+            <option value = "a-z">A-Z</option>
+            <option value = "z-a">Z-A</option>
+        </select>
+        <select>
+           {/*  <option value="">Filter Punctuation</option> */}
+            <option value = "asc">Mayor-Menor</option>
+            <option value = "des">Menor-Mayor</option>
+        </select>
+        <select>
+           {/*  <option value ="">Filter By Origin</option> */}
+            <option>All</option>
+            <option>Created</option>
+            <option>Api</option>
+        </select>
+        <select>
+           {/*  <option value="">Filter By Diets</option> */}
+            <option>All</option>
+        </select>
+        </div>
         </div>
     )
 
