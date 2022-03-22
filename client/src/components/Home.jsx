@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getRecipes } from "../actions"
 import {Link} from "react-router-dom"
+import Cards from "./Cards"
 
 export default function Home () {
 
@@ -39,13 +40,13 @@ export default function Home () {
         </select>
         <select>
            {/*  <option value ="">Filter By Origin</option> */}
-            <option>All</option>
-            <option>Created</option>
-            <option>Api</option>
+            <option value = "all">All</option>
+            <option value = "created">Created</option>
+            <option value = "api">Api</option>
         </select>
         <select>
            {/*  <option value="">Filter By Diets</option> */}
-            <option>All</option>
+            <option value = "all">All</option>
         </select>
         </div>
         </div>
