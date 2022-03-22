@@ -8,7 +8,7 @@ import Cards from "./Cards"
 export default function Home () {
 
     const dispatch = useDispatch()
-    const recetas = useSelector(state => state.recipes)
+    const allRecipes = useSelector(state => state.recipes)
 
     useEffect(() => {
         dispatch(getRecipes())
@@ -48,6 +48,10 @@ export default function Home () {
            {/*  <option value="">Filter By Diets</option> */}
             <option value = "all">All</option>
         </select>
+        {
+             getRecipes && getRecipes.map( e => {
+                 <Cards title = {e.title} image = {e.image} diets = {e.diets}/>
+             })}
         </div>
         </div>
     )
