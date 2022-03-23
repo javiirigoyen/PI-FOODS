@@ -1,5 +1,5 @@
 import React from "react"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getRecipes } from "../actions"
 import {Link} from "react-router-dom"
@@ -8,16 +8,17 @@ import Cards from "./Cards"
 export default function Home () {
 
     const dispatch = useDispatch()
-    const allRecipes = useSelector(state => state.recipes)
+    const allRecipes = useSelector( state => state.recipes)
+
+    console.log(allRecipes, 'Estas son las recetas')
 
     useEffect(() => {
         dispatch(getRecipes())
-    }, [])
+    }, [dispatch]) 
 
     function handleClick(e) {
         e.preventDefault()
-        dispatch(getRecipes)
-
+        dispatch(getRecipes())
     }
 
     return (
@@ -29,36 +30,41 @@ export default function Home () {
             </button>
        <div>
         <select>
-            {/* <option value = "">Filter Alphabetically</option> */}
+            <option value = "">Filter Alphabetically</option>
             <option value = "a-z">A-Z</option>
             <option value = "z-a">Z-A</option>
         </select>
         <select>
-           {/*  <option value="">Filter Punctuation</option> */}
+            <option value="">Filter Punctuation</option>
             <option value = "asc">Mayor-Menor</option>
             <option value = "des">Menor-Mayor</option>
         </select>
         <select>
-           {/*  <option value ="">Filter By Origin</option> */}
+            <option value ="">Filter By Origin</option>
             <option value = "all">All</option>
             <option value = "created">Created</option>
             <option value = "api">Api</option>
         </select>
         <select>
-           {/*  <option value="">Filter By Diets</option> */}
+            <option value="">Filter By Diets</option>
             <option value = "all">All</option>
         </select>
+
+
         {
-            allRecipes?.map((e) =>{
-                return(
-                    <div>
-                        <Link to = {"/home" + e.id}>
-                            <Cards title = {e.title} image = {e.image} diets = {e.diets} key = {e.id}/>
-                            </Link>
-                    </div>
-                )
-            })}
+            allRecipes.length !== 0 ? allRecipes.map((c, index) => <Cards
+            title={c.title}
+            image={c.image}
+            key={index}
+            id={c.id}
+            />) 
+            :
+            <h1>Cargando...</h1>
+        } 
+
+    
         </div>
+        
         </div>
     )
 
