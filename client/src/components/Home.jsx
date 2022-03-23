@@ -49,9 +49,15 @@ export default function Home () {
             <option value = "all">All</option>
         </select>
         {
-             getRecipes && getRecipes.map( e => {
-                 <Cards title = {e.title} image = {e.image} diets = {e.diets}/>
-             })}
+            allRecipes?.map((e) =>{
+                return(
+                    <div>
+                        <Link to = {"/home" + e.id}>
+                            <Cards title = {e.title} image = {e.image} diets = {e.diets} key = {e.id}/>
+                            </Link>
+                    </div>
+                )
+            })}
         </div>
         </div>
     )

@@ -10,6 +10,8 @@ function rootReducer(state = initialState, action ) {
             ...state, 
             recipes : action.payload
         }
+        default :
+        return state
     }
 
 }
