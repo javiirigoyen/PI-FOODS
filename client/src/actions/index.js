@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const GET_RECIPES = "GET_RECIPES"
+export const FILTER_CREATED = "FILTER_CREATED"
 
 //conecto el front con el back
 
@@ -11,5 +12,12 @@ export function getRecipes () {
          type: GET_RECIPES,
          payload: response.data
      })
+    }
+}
+
+export function filterCreated(payload) {
+    return {
+        type: "FILTER_CREATED",
+        payload
     }
 }

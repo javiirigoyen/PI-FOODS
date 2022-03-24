@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRecipes } from "../actions"
+import { getRecipes, filterCreated } from "../actions"
 import {Link} from "react-router-dom"
 import Cards from "./Cards"
 import Paginado from "./Paginado"
@@ -30,6 +30,10 @@ export default function Home () {
         dispatch(getRecipes())
     }
 
+    function handleCreated(e) {
+        dispatch(filterCreated(e.target.value))
+    }
+
     return (
         <div>
             <Link to = "/recipe">Create Recipe</Link>
@@ -48,7 +52,7 @@ export default function Home () {
             <option value = "asc">Mayor-Menor</option>
             <option value = "des">Menor-Mayor</option>
         </select>
-        <select>
+        <select onChange={e => handleCreated(e)}>
             <option value ="">Filter By Origin</option>
             <option value = "all">All</option>
             <option value = "created">Created</option>
