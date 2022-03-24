@@ -1,15 +1,24 @@
-import React from "react"
+import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getRecipes } from "../actions"
 import {Link} from "react-router-dom"
 import Cards from "./Cards"
+import Paginado from "./Paginado"
 
 export default function Home () {
 
     const dispatch = useDispatch()
     const allRecipes = useSelector( state => state.recipes)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [recipesPerPage, setRecipesPerPage] = useState(9)
+    const indexOfLastRecipes = currentPage * recipesPerPage
+    const indexOfFirtsRecipes = indexOfLastRecipes - recipesPerPage
+    const currentRecipes = allRecipes.slice(indexOfFirtsRecipes, indexOfLastRecipes)
 
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
     console.log(allRecipes, 'Estas son las recetas')
 
     useEffect(() => {
@@ -50,9 +59,13 @@ export default function Home () {
             <option value = "all">All</option>
         </select>
 
-
-        {
-            allRecipes.length !== 0 ? allRecipes.map((c, index) => <Cards
+        <Paginado 
+        recipesPerPage={recipesPerPage}
+        allRecipes={allRecipes.length}
+        paginado={paginado}
+        />
+{
+            currentRecipes.length !== 0 ? currentRecipes.map((c, index) => <Cards
             title={c.title}
             image={c.image}
             key={index}
