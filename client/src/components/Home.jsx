@@ -5,6 +5,7 @@ import { getRecipes, filterCreated, orderByName } from "../actions"
 import {Link} from "react-router-dom"
 import Cards from "./Cards"
 import Paginado from "./Paginado"
+import SearchBar from "./SearchBar"
 
 export default function Home () {
 
@@ -76,6 +77,7 @@ export default function Home () {
         allRecipes={allRecipes.length}
         paginado={paginado}
         />
+        <SearchBar/>
 {
             currentRecipes.length !== 0 ? currentRecipes.map((c, index) => <Cards
             title={c.title}
