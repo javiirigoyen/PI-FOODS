@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRecipes, filterCreated } from "../actions"
+import { getRecipes, filterCreated, orderByName } from "../actions"
 import {Link} from "react-router-dom"
 import Cards from "./Cards"
 import Paginado from "./Paginado"
@@ -10,6 +10,7 @@ export default function Home () {
 
     const dispatch = useDispatch()
     const allRecipes = useSelector( state => state.recipes)
+    const [order, setOrder] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
     const [recipesPerPage, setRecipesPerPage] = useState(9)
     const indexOfLastRecipes = currentPage * recipesPerPage
@@ -34,6 +35,13 @@ export default function Home () {
         dispatch(filterCreated(e.target.value))
     }
 
+    function handleSort(e) {
+        e.preventDefault()
+        dispatch(orderByName(e.target.value))
+        setCurrentPage(1)
+        setOrder(`ordenado${e.target.value}`)
+    }
+
     return (
         <div>
             <Link to = "/recipe">Create Recipe</Link>
@@ -42,7 +50,7 @@ export default function Home () {
                 Reload all recipes
             </button>
        <div>
-        <select>
+        <select onChange={e => handleSort(e)}>
             <option value = "">Filter Alphabetically</option>
             <option value = "a-z">A-Z</option>
             <option value = "z-a">Z-A</option>
