@@ -14,7 +14,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=91bb058f06c64a4a99fd166c25420e7a&addRecipeInformation=true&number=100")
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=9c407190e2ba4caa94c05234306490d8&addRecipeInformation=true&number=100")
     const apiInfo = urlApi.data.results.map(e => {
        
         return {
@@ -54,15 +54,16 @@ const getAllRecipes = async () => {
 
 router.get("/recipes", async (req, res) => {
     
-    const name = req.query.name
+    const title = req.query.title
+    console.log(title)
     let recipesAll = await getAllRecipes()
-   
-    if(name) {
-        console.log("asdasddas")
-        let recipesName = await recipesAll.filter(e => e.title.toLowerCase().includes(name.toLowerCase))
+
+    if(title) {
+        res.status(title)
+        let recipesName =  recipesAll.filter(e => e.title.toLowerCase().includes(title.toLowerCase())).map(el => el)
         recipesName.length ? 
         res.status(200).send(recipesName) : 
-        res.status(404).send("no recipes found")
+        res.status(404).send("no recipes found") 
     } else {
        
         res.status(200).json(recipesAll)
@@ -70,7 +71,7 @@ router.get("/recipes", async (req, res) => {
 })
 
 router.get("/types", async (req, res) => {
-    const diets = [
+    const  diets = [
         "vegetarian",
         "vegan" ,
         "gluten free",
