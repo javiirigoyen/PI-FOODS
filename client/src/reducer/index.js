@@ -29,6 +29,11 @@ function rootReducer(state = initialState, action ) {
                 recipes: createdFilter
             }
 
+            case "POST_RECIPE" :
+                return {
+                    ...state
+                }
+
             case "ORDER_BY_NAME" :
                  const sortArr = action.payload === "a-z" ?
                 state.recipes.sort(function (a, b) {
@@ -57,6 +62,25 @@ function rootReducer(state = initialState, action ) {
                     ...state,
                     recipes: sortArr
                 } 
+
+                case "ORDER_BY_SCORE":
+                    const sortedArrayScore = action.payload === "asc" ?
+                        state.recipes.sort(function (a, b) {
+                            if (a.healthScore < b.healthScore) return 1
+                            if (a.healthScore > b.healthScore) return -1
+                            return 0;
+                            
+                          }) :
+                        state.recipes.sort(function (a, b) {
+                            if(a.healthScore < b.healthScore) return -1
+                            if(a.healthScore > b.healthScore) return 1
+                            return 0;
+                            
+                          });
+                    return {
+                      ...state,
+                      recipes: sortedArrayScore,
+                    };
         
         default :
         return state

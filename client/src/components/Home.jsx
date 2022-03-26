@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRecipes, filterCreated, orderByName } from "../actions"
+import { getRecipes, filterCreated, orderByName, orderByScore } from "../actions"
 import {Link} from "react-router-dom"
 import Cards from "./Cards"
 import Paginado from "./Paginado"
@@ -40,9 +40,15 @@ export default function Home () {
         e.preventDefault()
         dispatch(orderByName(e.target.value))
         setCurrentPage(1)
-        setOrder(`ordenado${e.target.value}`)
+        setOrder(`${e.target.value}`)
     }
 
+    function handleByScore(e) {
+        e.preventDefault()
+        dispatch(orderByScore(e.target.value))
+        setCurrentPage(1)
+        setOrder(`${e.target.value}`)
+    }
     return (
         <div>
             <Link to = "/recipe">Create Recipe</Link>
@@ -56,7 +62,7 @@ export default function Home () {
             <option value = "a-z">A-Z</option>
             <option value = "z-a">Z-A</option>
         </select>
-        <select>
+        <select onChange={e => handleByScore(e)}>
             <option value="">Filter Punctuation</option>
             <option value = "asc">Mayor-Menor</option>
             <option value = "des">Menor-Mayor</option>
@@ -88,10 +94,7 @@ export default function Home () {
             :
             <h1>Cargando...</h1>
         } 
-
-    
         </div>
-        
         </div>
     )
 

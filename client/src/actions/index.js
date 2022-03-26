@@ -4,12 +4,16 @@ export const GET_RECIPES = "GET_RECIPES"
 export const FILTER_CREATED = "FILTER_CREATED"
 export const ORDER_BY_NAME = "ORDER_BY_NAME"
 export const GET_NAME_RECIPES = "GET_NAME_RECIPES"
+export const ORDER_BY_SCORE = "ORDER_BY_SCORE"
+export const GET_DIETS = "GET_DIETS"
 
 //conecto el front con el back
 
 export function getRecipes () {
      return async function(dispatch) {
-         let response = await axios.get("http://localhost:3001/recipes", {})
+         let response = await axios.get("http://localhost:3001/recipes", {
+
+         })
          return dispatch({
          type: GET_RECIPES,
          payload: response.data
@@ -32,6 +36,26 @@ export function getNameRecipes (title) {
     }
 }
 
+export function getDiets() {
+    return async function(dispatch) {
+        let infoDiets = await axios.get("http://localhost:3001/types", {
+
+        })
+        return dispatch({
+            type :  "GET_DIETS",
+            payload: infoDiets.data
+        })
+    }
+}
+
+export function postRecipe(payload){
+return async function(dispatch) {
+    let postRecipe = await axios.post("http://localhost:3001/recipe", payload)
+    return postRecipe
+}
+
+}
+
 export function filterCreated(payload) {
     return {
         type: "FILTER_CREATED",
@@ -45,3 +69,10 @@ export function orderByName(payload) {
         payload
     }
 }
+
+export function orderByScore(payload) {
+    return {
+      type: "ORDER_BY_SCORE",
+      payload
+    };
+  }
