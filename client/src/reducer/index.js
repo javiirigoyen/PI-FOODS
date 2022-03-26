@@ -2,7 +2,8 @@
 const initialState = {
   
     recipes : [],
-    allRecipes : []
+    allRecipes : [],
+    diets : []
 }
 
 function rootReducer(state = initialState, action ) {
@@ -30,9 +31,16 @@ function rootReducer(state = initialState, action ) {
             }
 
             case "POST_RECIPE" :
-                return {
+            return {
                     ...state
                 }
+
+                case "GET_DIETS" : 
+                return {
+                    ...state,
+                    diets : action.payload
+                }
+             
 
             case "ORDER_BY_NAME" :
                  const sortArr = action.payload === "a-z" ?
