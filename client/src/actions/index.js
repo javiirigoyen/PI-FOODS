@@ -6,6 +6,7 @@ export const ORDER_BY_NAME = "ORDER_BY_NAME"
 export const GET_NAME_RECIPES = "GET_NAME_RECIPES"
 export const ORDER_BY_SCORE = "ORDER_BY_SCORE"
 export const GET_DIETS = "GET_DIETS"
+export const GET_DEATAIL = "GET_DETAIL"
 
 //conecto el front con el back
 
@@ -32,6 +33,20 @@ export function getNameRecipes (title) {
             })
         } catch (error) {
             console.log();
+        }
+    }
+}
+
+export function getDetail(id) {
+    return async function(dispatch) {
+        try {
+            let json = await axios.get(`http://localhost:3001/recipes/${id}`)
+            return dispatch ({
+                type: "GET_DETAIL",
+                payload : json.data
+            })
+        } catch (error) {
+            console.log(error)
         }
     }
 }
