@@ -117,7 +117,7 @@ export default function RecipeCreate() {
               <input
                 type="text"
                 value={input.stepByStep}
-                title="steps"
+                title="stepByStep"
                 onChange={(e) => handleChange(e)}
               />
             </div>

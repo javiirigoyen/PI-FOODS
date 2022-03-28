@@ -3,7 +3,7 @@ import React from "react"
 export default function Paginado({paginado, recipesPerPage, allRecipes}) {
     const pageNumbers = []
 
-    for(let i = 0; i <= Math.ceil(allRecipes/recipesPerPage); i++) {
+    for(let i = 1; i <= Math.ceil(allRecipes/recipesPerPage); i++) {
         pageNumbers.push(i)
     }
 

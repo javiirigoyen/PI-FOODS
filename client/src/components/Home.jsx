@@ -76,6 +76,15 @@ export default function Home () {
         <select>
             <option value="">Filter By Diets</option>
             <option value = "all">All</option>
+            <option value="gluten free">Gluten Free</option>
+            <option value="dairy free">Dairy Free</option>
+            <option value="vegan">Vegan</option>
+            <option value="lacto ovo vegetarian">Lacto-Ovo Vegetarian</option>
+            <option value="pescatarian">Pescatarian</option>
+            <option value="paleolithic">Paleolithic</option>
+            <option value="primal">Primal</option>
+            <option value="fodmap friendly">Low FODMAP</option>
+            <option value="whole 30">Whole30</option>
         </select>
 
         <Paginado 
