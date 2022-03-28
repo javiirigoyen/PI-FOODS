@@ -7,31 +7,35 @@ import { getDetail } from "../actions/index";
 export default function Detail() {
     const dispatch = useDispatch()
     const {id} = useParams()
-    console.log(id)
+    const myRecipe = useSelector((state) => state.detail)
+    console.log(myRecipe)
+    
 
-
-    useEffect(() => {
+      useEffect(() => {
         dispatch(getDetail(id))
     }, [dispatch, id])
 
-    const myRecipe = useSelector((state) => state.detail)
 
    return (
        <div>
            {
                Object.keys(myRecipe).length > 0 ?
                <div>
-                   <h1> Title {myRecipe[0].title}</h1>
+                   <h1> {myRecipe[0].title}</h1>
                    <img src = {myRecipe[0].image} alt= "img not found"/>
+                   <h2>Summary : {myRecipe[0].summary}</h2>
                    <h2>Score : {myRecipe[0].healthScore} </h2>
                    <h2>Spoonacular Score : {myRecipe[0].spoonacularScore}</h2>
-                   {myRecipe.dishTypes ? (
-                  <h2>Dish Types: {myRecipe.dishTypes + " "}</h2>
+                   {myRecipe[0].dishTypes ? (
+                  <h2>Dish Types: {myRecipe[0].dishTypes.map((el) => el) + " "}</h2>
                 ) : (
                   ""
                 )}
-                   <h2>Diets:{!myRecipe.createdInDb ? myRecipe.diets + " ": myRecipe.diets.map((e) => e.title + " ")} </h2>
+                   <h2>Diets:{ myRecipe[0].diets.map((el) => el.title?el.title  + " ": el + " ")} </h2>
+                   <h2>Steps : </h2>
+                  {myRecipe[0].steps.map((el, index) => `${index + 1}. ${el}`)}
                  </div> : <p>Loading...</p>
+                 
            }
            <Link to = "/home">
                return

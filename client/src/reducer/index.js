@@ -3,13 +3,13 @@ const initialState = {
   
     recipes : [],
     allRecipes : [],
-    diets : [],
+    diets : [], //para el post
     detail : []
 }
 
 function rootReducer(state = initialState, action ) {
     switch(action.type) {
-        case "GET_RECIPES" : 
+        case "GET_RECIPES": 
         return {
             ...state, 
             recipes : action.payload,
@@ -47,6 +47,21 @@ function rootReducer(state = initialState, action ) {
                     ...state,
                     detail : action.payload
                 }
+
+                case "FILTER_BY_TYPES":
+                    const allRecipes = state.allRecipes;
+                    const typesFiltered =
+                      action.payload === "All"
+                        ? allRecipes
+                        : allRecipes.filter(
+                            (e) =>
+                              e.diets.includes(action.payload) ||
+                              e.diets.map((e) => e.title).includes(action.payload)
+                          );
+                    return {
+                      ...state,
+                      recipes: typesFiltered,
+                    };
              
 
             case "ORDER_BY_NAME" :

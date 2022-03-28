@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getRecipes, filterCreated, orderByName, orderByScore } from "../actions"
+import { getRecipes, filterCreated, orderByName, orderByScore, filterRecipesByTypes } from "../actions"
 import {Link} from "react-router-dom"
 import Cards from "./Cards"
 import Paginado from "./Paginado"
@@ -35,6 +35,10 @@ export default function Home () {
     function handleCreated(e) {
         dispatch(filterCreated(e.target.value))
     }
+    function handleFilterTypes(e) {
+        dispatch(filterRecipesByTypes(e.target.value));
+        setCurrentPage(1);
+      }
 
     function handleSort(e) {
         e.preventDefault()
@@ -53,29 +57,29 @@ export default function Home () {
         <div>
             <Link to = "/recipe">Create Recipe</Link>
             <h1> RECIPE APP </h1>
-            <button onClick={e => {handleClick(e)}}>
+            <button onClick={(e) => {handleClick(e)}}>
                 Reload all recipes
             </button>
        <div>
-        <select onChange={e => handleSort(e)}>
+        <select onChange={(e) => handleSort(e)}>
             <option value = "">Filter Alphabetically</option>
             <option value = "a-z">A-Z</option>
             <option value = "z-a">Z-A</option>
         </select>
-        <select onChange={e => handleByScore(e)}>
+        <select onChange={(e) => handleByScore(e)}>
             <option value="">Filter Punctuation</option>
             <option value = "asc">Mayor-Menor</option>
             <option value = "des">Menor-Mayor</option>
         </select>
-        <select onChange={e => handleCreated(e)}>
+        <select onChange={(e) => handleCreated(e)}>
             <option value ="">Filter By Origin</option>
             <option value = "all">All</option>
             <option value = "created">Created</option>
             <option value = "api">Api</option>
         </select>
-        <select>
+        <select  onChange={(e)=> handleFilterTypes(e)}>
             <option value="">Filter By Diets</option>
-            <option value = "all">All</option>
+            <option value = "All">All</option>
             <option value="gluten free">Gluten Free</option>
             <option value="dairy free">Dairy Free</option>
             <option value="vegan">Vegan</option>
@@ -99,10 +103,20 @@ export default function Home () {
             image={c.image}
             key={index}
             id={c.id}
+            diets={
+                "Diets: " +
+                (!c.createdInDb
+                  ? c.diets + " "
+                  : c.diets.map((el) => el.title + " ")) +
+                " ."
+              }
             />) 
             :
-            <h1>Cargando...</h1>
+            <h1>Loading...</h1>
+            
         } 
+
+        
         </div>
         </div>
     )

@@ -1,12 +1,5 @@
 import axios from "axios"
 
-export const GET_RECIPES = "GET_RECIPES"
-export const FILTER_CREATED = "FILTER_CREATED"
-export const ORDER_BY_NAME = "ORDER_BY_NAME"
-export const GET_NAME_RECIPES = "GET_NAME_RECIPES"
-export const ORDER_BY_SCORE = "ORDER_BY_SCORE"
-export const GET_DIETS = "GET_DIETS"
-export const GET_DEATAIL = "GET_DETAIL"
 
 //conecto el front con el back
 
@@ -16,7 +9,7 @@ export function getRecipes () {
 
          })
          return dispatch({
-         type: GET_RECIPES,
+         type: "GET_RECIPES",
          payload: response.data
      })
     }
@@ -70,6 +63,13 @@ return async function(dispatch) {
 }
 
 }
+
+export function filterRecipesByTypes(payload) {
+    return {
+      type: "FILTER_BY_TYPES",
+      payload,
+    };
+  }
 
 export function filterCreated(payload) {
     return {
