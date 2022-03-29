@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react"
 import {Link, useHistory} from "react-router-dom"
 import {postRecipe, getDiets} from "../actions/index"
 import {useDispatch, useSelector} from "react-redux"
+import "./RecipeCreate.css";
+
 
 function validate(input) {
   let errors = {};
@@ -80,10 +82,10 @@ export default function RecipeCreate() {
     return (
       <div>
         <Link to="/home">
-          <button>Return</button>
+          <button  className="button">Return</button>
         </Link>
-        <form onSubmit={(e) =>handleSubmit(e)}>
-          <div>
+        <form onSubmit={(e) =>handleSubmit(e)} className="Formulario">
+          <div className="inputs">
             <div>
               <label>Title:</label>
               <input
@@ -94,6 +96,18 @@ export default function RecipeCreate() {
                 />
                 {errors.title&& (
                         <p>{errors.title}</p>
+                    )}
+            </div>
+            <div>
+              <label>Summary:</label>
+              <input
+                type="text"
+                value={input.summary}
+                title="summary"
+                onChange={(e) => handleChange(e)}
+                />
+                {errors.summary && (
+                        <p>{errors.summary}</p>
                     )}
             </div>
             <div>
@@ -126,7 +140,7 @@ export default function RecipeCreate() {
             <div>
               <label>Spoonacular Score:</label>
               <input
-                id="HealthyFoodLevel"
+                id="SpoonacularScore"
                 type="number"
                 value={input.spoonacularScore}
                 title="spoonacularScore"
@@ -136,18 +150,6 @@ export default function RecipeCreate() {
               />
               {errors.spoonacularScore && (
                         <p>{errors.spoonacularScore}</p>
-                    )}
-            </div>
-            <div>
-              <label>Summary:</label>
-              <input
-                type="text"
-                value={input.summary}
-                title="summary"
-                onChange={(e) => handleChange(e)}
-                />
-                {errors.summary && (
-                        <p>{errors.summary}</p>
                     )}
             </div>
             <div>
@@ -164,10 +166,10 @@ export default function RecipeCreate() {
             </div>
           </div>
   
-          <div>
+          <div className="tipoDeDietas">
             <div>
               <label>Diets:</label>
-              <div>
+              <div  className="opciones">
                 {diets.map((e) => (
                   <div>
                     <input
@@ -182,7 +184,7 @@ export default function RecipeCreate() {
               </div>
             </div>
           </div>
-          <button type="submit">
+          <button type="submit" className="button">
             Create Recipe
           </button>
         </form>

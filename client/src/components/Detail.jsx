@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../actions/index";
 
+
+
 export default function Detail() {
     const dispatch = useDispatch()
     const {id} = useParams()
@@ -17,7 +19,7 @@ export default function Detail() {
 
 
    return (
-       <div>
+       <div className="Detail">
            {
                Object.keys(myRecipe).length > 0 ?
                <div>
