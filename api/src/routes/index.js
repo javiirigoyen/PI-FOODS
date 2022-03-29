@@ -6,15 +6,13 @@ const axios = require("axios");
 const {Diets, Recipe} = require("../db")
 
 
-
-
 const router = Router();
 //
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
  const getApiInfo = async () => {
-    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=d86dcf677d5745d7a6641951a3683427&addRecipeInformation=true&number=100")
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=57f1142712bb4add991b9b903b2a0a90&addRecipeInformation=true&number=100")
     const apiInfo = urlApi.data.results.map(e => {
        
         return {
@@ -26,7 +24,7 @@ const router = Router();
             spoonacularScore: e.spoonacularScore,
             steps: e.analyzedInstructions.length?e.analyzedInstructions[0].steps.map(e => e.step) : [],
             diets : e.diets.length?e.diets : [], 
-            dishTypes : e.dishTypes.length?e.dishTypes : []
+            dishTypes : e.dishTypes.length?e.dishTypes : [] 
 
         }
     })
@@ -113,8 +111,10 @@ router.get("/types", async (req, res) => {
         createInDb,
         
     })
-
-     await recipeCreated.addDiets(diets)
+    const typeOfDiets = await Diets.findAll({
+        where : {title : diets}
+    })
+     await recipeCreated.addDiets(typeOfDiets)
     return res.status(200).send("recipe created successfully!")
 
 
