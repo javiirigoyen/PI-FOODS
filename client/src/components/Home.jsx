@@ -67,7 +67,7 @@ export default function Home () {
             <option value = "z-a">Z-A</option>
         </select>
         <select onChange={(e) => handleByScore(e)}>
-            <option value="">Filter Punctuation</option>
+            <option value="">Filter Score</option>
             <option value = "asc">Mayor-Menor</option>
             <option value = "des">Menor-Mayor</option>
         </select>
@@ -89,6 +89,8 @@ export default function Home () {
             <option value="primal">Primal</option>
             <option value="fodmap friendly">Low FODMAP</option>
             <option value="whole 30">Whole30</option>
+            <option value="vegetarian">Vegeterian</option>
+            <option value="ketogenic">Ketogenic</option>
         </select>
 
         <Paginado 
