@@ -10,11 +10,11 @@ export default function Paginado({paginado, recipesPerPage, allRecipes}) {
 
     return (
         <nav>
-            <div className="paginado">
+            <div>
                 { 
                pageNumbers.map(number => (
                     <div key ={number}>
-                <button className="number" onClick = {() => paginado(number)}>{number}</button>
+                <button  onClick = {() => paginado(number)}>{number}</button>
                 </div>
                 ))}
             </div>

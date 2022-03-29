@@ -82,10 +82,10 @@ export default function RecipeCreate() {
     return (
       <div>
         <Link to="/home">
-          <button  className="button">Return</button>
+          <button>Return</button>
         </Link>
-        <form onSubmit={(e) =>handleSubmit(e)} className="Formulario">
-          <div className="inputs">
+        <form onSubmit={(e) =>handleSubmit(e)}>
+          <div>
             <div>
               <label>Title:</label>
               <input
@@ -93,6 +93,7 @@ export default function RecipeCreate() {
                 value={input.title}
                 title="title"
                 onChange={(e) => handleChange(e)}
+                
                 />
                 {errors.title&& (
                         <p>{errors.title}</p>
@@ -105,6 +106,7 @@ export default function RecipeCreate() {
                 value={input.summary}
                 title="summary"
                 onChange={(e) => handleChange(e)}
+                
                 />
                 {errors.summary && (
                         <p>{errors.summary}</p>
@@ -117,6 +119,7 @@ export default function RecipeCreate() {
                 value={input.image}
                 title="image"
                 onChange={(e) => handleChange(e)}
+                
               />
               {errors.image && (
                         <p>{errors.image}</p>
@@ -125,13 +128,14 @@ export default function RecipeCreate() {
             <div>
               <label>Health Score:</label>
               <input
-                id="score"
+                
                 type="number"
                 value={input.healthScore}
                 title="healthScore"
                 min="0"
                 max="100"
                 onChange={(e) => handleChange(e)}
+               
               />
                {errors.healthScore && (
                         <p>{errors.healthScore}</p>
@@ -140,13 +144,14 @@ export default function RecipeCreate() {
             <div>
               <label>Spoonacular Score:</label>
               <input
-                id="SpoonacularScore"
+                
                 type="number"
                 value={input.spoonacularScore}
                 title="spoonacularScore"
                 min="0"
                 max="100"
                 onChange={(e) => handleChange(e)}
+               
               />
               {errors.spoonacularScore && (
                         <p>{errors.spoonacularScore}</p>
@@ -159,6 +164,7 @@ export default function RecipeCreate() {
                 value={input.steps}
                 title="steps"
                 onChange={(e) => handleChange(e)}
+               
               />
               {errors.steps && (
                         <p>{errors.steps}</p>
@@ -166,10 +172,10 @@ export default function RecipeCreate() {
             </div>
           </div>
   
-          <div className="tipoDeDietas">
+          <div >
             <div>
               <label>Diets:</label>
-              <div  className="opciones">
+              <div>
                 {diets.map((e) => (
                   <div>
                     <input
@@ -177,14 +183,14 @@ export default function RecipeCreate() {
                       value={e.title}
                       title={e.title}
                       onChange={(e) => handleCheck(e)}
-                    />
+                      />
                     <label>{e.title}</label>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <button type="submit" className="button">
+          <button type="submit">
             Create Recipe
           </button>
         </form>

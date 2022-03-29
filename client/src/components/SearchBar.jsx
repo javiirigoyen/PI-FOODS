@@ -18,15 +18,15 @@ function handleInputRecipes(e) {
 function handleSubmit(e) {
     e.preventDefault()
     dispatch(getNameRecipes(title))
-    setTitle("")
+    setTitle(e.value = '')
 }
 
 
 
     return (
         <div>
-            <input id="inputName" type="text" placeholder="Search Recipes..." onChange={(e) => handleInputRecipes(e)}/>
-            <button type="submit"  onClick={(e) => handleSubmit(e)} id="buttonSearch">Search Recipes</button>
+            <input  type="text" placeholder="Search Recipes..." onChange={(e) => handleInputRecipes(e)}/>
+            <button type="submit"  onClick={(e) => handleSubmit(e)}>Search Recipes</button>
         </div>
     )
 }

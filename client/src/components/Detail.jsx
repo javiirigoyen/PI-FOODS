@@ -19,7 +19,7 @@ export default function Detail() {
 
 
    return (
-       <div className="Detail">
+       <div>
            {
                Object.keys(myRecipe).length > 0 ?
                <div>
