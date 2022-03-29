@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       
     },
-    stepByStep: {
+    steps: {
       type: DataTypes.TEXT,
       
     },

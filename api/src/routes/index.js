@@ -13,8 +13,8 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-const getApiInfo = async () => {
-    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=a4a115141ec4468d859ccb76f5fb679a&addRecipeInformation=true&number=100")
+ const getApiInfo = async () => {
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=d86dcf677d5745d7a6641951a3683427&addRecipeInformation=true&number=100")
     const apiInfo = urlApi.data.results.map(e => {
        
         return {
@@ -24,13 +24,15 @@ const getApiInfo = async () => {
             image: e.image,
             healthScore: e.healthScore,
             spoonacularScore: e.spoonacularScore,
-            steps: e.analyzedInstructions.length?e.analyzedInstructions[0].steps.map(e => e.step) : []
+            steps: e.analyzedInstructions.length?e.analyzedInstructions[0].steps.map(e => e.step) : [],
+            diets : e.diets.length?e.diets : [], 
+            dishTypes : e.dishTypes.length?e.dishTypes : []
 
         }
     })
       
     return apiInfo
-}
+} 
 
 const getDbInfo = async () => {
     return await Recipe.findAll({
@@ -46,9 +48,10 @@ const getDbInfo = async () => {
 }
 
 const getAllRecipes = async () => {
-    const apiInfos = await getApiInfo()
+   const apiInfos = await getApiInfo()
     const dbInfos = await getDbInfo()
-    const allInfo = apiInfos.concat(dbInfos) 
+    const allInfo = dbInfos.concat(apiInfos) 
+    
     return allInfo
 }
 
@@ -57,6 +60,7 @@ router.get("/recipes", async (req, res) => {
     const title = req.query.title
     console.log(title)
     let recipesAll = await getAllRecipes()
+    
 
     if(title) {
         res.status(title)
