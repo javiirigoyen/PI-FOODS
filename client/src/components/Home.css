@@ -1,0 +1,35 @@
+.az {
+    background-color: brown;
+}
+.maxmin {
+    background-color: brown;
+}
+.diets {
+    background-color: brown;
+}
+.reload {
+    background-color: brown;
+}
+
+.button {
+   
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: all 0.3s ease 0s;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 380px);
+    gap: 4rem;
+    justify-content: center;
+  }
+
+  .loading {
+        
+   
+    width: 100vw;
+    height: 100vh;
+  }

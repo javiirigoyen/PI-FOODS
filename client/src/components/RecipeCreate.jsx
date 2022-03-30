@@ -82,15 +82,17 @@ export default function RecipeCreate() {
     return (
       <div>
         <Link to="/home">
-          <button>Return</button>
+        <button className="button">Return</button>
         </Link>
-        <form onSubmit={(e) =>handleSubmit(e)}>
+        <form onSubmit={(e) =>handleSubmit(e)} className="Formulario">
           <div>
             <div>
               <label>Title:</label>
               <input
                 type="text"
-                value={input.title}
+                value={`${input.title
+                  .charAt(0)
+                  .toUpperCase()}${input.title.slice(1)}`}
                 title="title"
                 onChange={(e) => handleChange(e)}
                 

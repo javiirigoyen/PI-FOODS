@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRecipes,
-  filterCreated,
   orderByName,
   orderByScore,
   filterRecipesByTypes,
@@ -12,6 +11,7 @@ import { Link } from "react-router-dom";
 import Cards from "./Cards";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -35,14 +35,13 @@ export default function Home() {
     dispatch(getRecipes());
   }, [dispatch]);
 
+
   function handleClick(e) {
     e.preventDefault();
     dispatch(getRecipes());
   }
 
-  function handleCreated(e) {
-    dispatch(filterCreated(e.target.value));
-  }
+ 
   function handleFilterTypes(e) {
     dispatch(filterRecipesByTypes(e.target.value));
     setCurrentPage(1);
@@ -63,33 +62,30 @@ export default function Home() {
   }
   return (
     <div>
-      <Link to="/recipe">Create Recipe</Link>
+      <Link to="/recipe">
+      <button className="button">Create new recipe</button>
+       </Link>
       <h1> RECIPE APP </h1>
       <button
         onClick={(e) => {
           handleClick(e);
         }}
-      >
+        className = "reload">
         Reload all recipes
       </button>
       <div>
-        <select onChange={(e) => handleSort(e)}>
+        <select onChange={(e) => handleSort(e)} className = "az">
           <option value="">Filter Alphabetically</option>
           <option value="a-z">A-Z</option>
           <option value="z-a">Z-A</option>
         </select>
-        <select onChange={(e) => handleByScore(e)}>
+        <select onChange={(e) => handleByScore(e)} className = "maxmin">
           <option value="">Filter Score</option>
-          <option value="asc">Mayor-Menor</option>
-          <option value="des">Menor-Mayor</option>
+          <option value="asc">Max-Min</option>
+          <option value="des">Min-Max</option>
         </select>
-        <select onChange={(e) => handleCreated(e)}>
-          <option value="">Filter By Origin</option>
-          <option value="all">All</option>
-          <option value="created">Created</option>
-          <option value="api">Api</option>
-        </select>
-        <select onChange={(e) => handleFilterTypes(e)}>
+
+        <select onChange={(e) => handleFilterTypes(e)} className = "diets">
           <option value="">Filter By Diets</option>
           <option value="All">All</option>
           <option value="gluten free">Gluten Free</option>
@@ -105,13 +101,14 @@ export default function Home() {
           <option value="ketogenic">Ketogenic</option>
         </select>
 
+       
         <Paginado
           recipesPerPage={recipesPerPage}
           allRecipes={allRecipes.length}
           paginado={paginado}
         />
         <SearchBar />
-        <div>
+        <div className="cards">
           {currentRecipes.length !== 0 ? (
             currentRecipes.map((c, index) => (
               <Cards
@@ -129,7 +126,7 @@ export default function Home() {
               />
             ))
           ) : (
-            <h1>Loading...</h1>
+            <h1 className="loading">Loading...</h1>
           )}
         </div>
       </div>

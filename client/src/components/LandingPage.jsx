@@ -4,10 +4,10 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
     return (
-        <div >
-        <div>
+        <div className="LandingPage" >
+        <div className="letras">
             <h1>FOOD APP</h1>
-            <div >
+            <div id="button">
             <Link to = "/home">
                 <button>HOME</button>
             </Link>

@@ -12,21 +12,23 @@ export default function SearchBar() {
 function handleInputRecipes(e) {
         e.preventDefault()
         setTitle(e.target.value)
-        console.log(title)
-}
-
-function handleSubmit(e) {
-    e.preventDefault()
-    dispatch(getNameRecipes(title))
-    setTitle(e.value = '')
+        
+    }
+    
+    function handleSubmit(e) {
+        e.preventDefault()
+        dispatch(getNameRecipes(title))
+        setTitle("")
+        
+   
 }
 
 
 
     return (
-        <div>
-            <input  type="text" placeholder="Search Recipes..." onChange={(e) => handleInputRecipes(e)}/>
-            <button type="submit"  onClick={(e) => handleSubmit(e)}>Search Recipes</button>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <input  id="inputName" type="text" placeholder="Search Recipes..." onChange={(e) => handleInputRecipes(e)}/>
+            <button type="submit"  id="buttonSearch">Search</button>
+        </form>
     )
 }

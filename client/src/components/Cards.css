@@ -1,0 +1,12 @@
+.Card {
+    background-color: rgb(183, 188, 204);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 5px 2px 15px 0px #1f1d36;
+    opacity: 0.9;
+    width: 340px;
+    height: 400px;
+    display: grid;
+   
+  }

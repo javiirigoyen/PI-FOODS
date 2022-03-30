@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../actions/index";
+import "./Detail.css";
 
 
 
@@ -19,10 +20,10 @@ export default function Detail() {
 
 
    return (
-       <div>
+       <div className="detail">
            {
                Object.keys(myRecipe).length > 0 ?
-               <div>
+               <div className="detailuno">
                    <h1> {myRecipe[0]?.title}</h1>
                    <img src = {myRecipe[0]?.image} alt= "img not found"/>
                    <h2>Summary : </h2> <div dangerouslySetInnerHTML={{ __html: myRecipe[0]?.summary }} />
@@ -41,7 +42,7 @@ export default function Detail() {
                  
            }
            <Link to = "/home">
-               return
+           <button className="button">Return</button>
            </Link>
        </div>
    )

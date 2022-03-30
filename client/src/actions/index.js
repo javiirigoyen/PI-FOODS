@@ -16,8 +16,8 @@ export function getRecipes () {
 }
 
 export function getNameRecipes (title) {
-    console.log(title, "esta es la info")
-    return async function (dispatch) {
+    
+return async function (dispatch) {
         try{
             let response = await axios.get(`http://localhost:3001/recipes?title=${title}`)
             return dispatch ({
@@ -25,7 +25,7 @@ export function getNameRecipes (title) {
                 payload: response.data
             })
         } catch (error) {
-            console.log();
+            console.log(error);
         }
     }
 }
@@ -70,14 +70,6 @@ export function filterRecipesByTypes(payload) {
       payload,
     };
   }
-
-export function filterCreated(payload) {
-    return {
-        type: "FILTER_CREATED",
-        payload
-    }
-}
-
 export function orderByName(payload) {
     return {
         type : "ORDER_BY_NAME",
