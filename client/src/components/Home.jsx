@@ -35,13 +35,11 @@ export default function Home() {
     dispatch(getRecipes());
   }, [dispatch]);
 
-
   function handleClick(e) {
     e.preventDefault();
     dispatch(getRecipes());
   }
 
- 
   function handleFilterTypes(e) {
     dispatch(filterRecipesByTypes(e.target.value));
     setCurrentPage(1);
@@ -63,29 +61,30 @@ export default function Home() {
   return (
     <div>
       <Link to="/recipe">
-      <button className="button">Create new recipe</button>
-       </Link>
+        <button className="button">Create new recipe</button>
+      </Link>
       <h1> RECIPE APP </h1>
       <button
         onClick={(e) => {
           handleClick(e);
         }}
-        className = "reload">
+        className="reload"
+      >
         Reload all recipes
       </button>
       <div>
-        <select onChange={(e) => handleSort(e)} className = "az">
+        <select onChange={(e) => handleSort(e)} className="az">
           <option value="">Filter Alphabetically</option>
           <option value="a-z">A-Z</option>
           <option value="z-a">Z-A</option>
         </select>
-        <select onChange={(e) => handleByScore(e)} className = "maxmin">
+        <select onChange={(e) => handleByScore(e)} className="maxmin">
           <option value="">Filter Score</option>
           <option value="asc">Max-Min</option>
           <option value="des">Min-Max</option>
         </select>
 
-        <select onChange={(e) => handleFilterTypes(e)} className = "diets">
+        <select onChange={(e) => handleFilterTypes(e)} className="diets">
           <option value="">Filter By Diets</option>
           <option value="All">All</option>
           <option value="gluten free">Gluten Free</option>
@@ -101,7 +100,6 @@ export default function Home() {
           <option value="ketogenic">Ketogenic</option>
         </select>
 
-       
         <Paginado
           recipesPerPage={recipesPerPage}
           allRecipes={allRecipes.length}
