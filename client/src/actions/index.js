@@ -5,9 +5,10 @@ import axios from "axios"
 
 export function getRecipes () {
      return async function(dispatch) {
+        dispatch({ type: "CARGANDO" });
          let response = await axios.get("http://localhost:3001/recipes", {
 
-         })
+})
          return dispatch({
          type: "GET_RECIPES",
          payload: response.data
@@ -32,17 +33,15 @@ return async function (dispatch) {
 
 export function getDetail(id) {
     return async function(dispatch) {
-        try {
+        dispatch({ type: "CARGANDO" });
             let json = await axios.get("http://localhost:3001/recipes/" + id)
             return dispatch ({
                 type: "GET_DETAIL",
                 payload : json.data
             })
-        } catch (error) {
-            console.log(error)
-        }
+        } 
     }
-}
+
 
 export function getDiets() {
     return async function(dispatch) {
