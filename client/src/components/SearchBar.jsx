@@ -23,9 +23,7 @@ function handleInputRecipes(e) {
    
 }
 
-
-
-    return (
+ return (
         <form onSubmit={handleSubmit}>
             <input  id="inputName" type="text" placeholder="Search Recipes..." onChange={(e) => handleInputRecipes(e)}/>
             <button type="submit"  id="buttonSearch">Search</button>

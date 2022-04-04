@@ -11,14 +11,14 @@ function validate(input) {
       errors.title = "Title is Required"
   }else if (!input.summary) {
       errors.summary = "Summary is Required"
+  }else if (!input.image) {
+        errors.image = "Image is Required"
   }else if (!input.healthScore) {
       errors.healthScore = "Score Number is Required"
   }else if (!input.spoonacularScore) {
       errors.spoonacularScore = "Level Number is Required"
   }else if (!input.steps) {
       errors.steps = "Steps is Required"
-  }else if (!input.image) {
-      errors.image = "Image is Required"
   }
       return errors;
 };
@@ -32,11 +32,11 @@ export default function RecipeCreate() {
     const [input, setInput] = useState({
       title: "",
       summary: "",
-      diets: [],
       image: "",
       healthScore: "",
       spoonacularScore: "",
       steps: "",
+      diets: [],
     });
   
     function handleChange(e) {
@@ -66,11 +66,11 @@ export default function RecipeCreate() {
       setInput({
         title: "",
         summary: "",
-        diets: [],
         image: "",
         healthScore: "",
         spoonacularScore: "",
         steps: "",
+        diets: [],
       });
       history.push("/home");
     }

@@ -5,6 +5,7 @@ const initialState = {
     allRecipes : [],
     diets : [], //para el post
     detail : []
+  
 }
 
 function rootReducer(state = initialState, action ) {
@@ -14,6 +15,7 @@ function rootReducer(state = initialState, action ) {
             ...state, 
             recipes : action.payload,
             allRecipes: action.payload
+            
            
         }
 
