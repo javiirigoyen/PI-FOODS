@@ -15,7 +15,7 @@ export function getRecipes () {
      })
     }
 }
-
+//
 export function getNameRecipes (title) {
     
 return async function (dispatch) {
