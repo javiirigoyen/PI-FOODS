@@ -7,11 +7,16 @@
   width: 900px;
   border-radius: 20px;
   margin: auto;
-  margin-top: 40px;
-  height: 400px;
-  padding: 20px 0px 20px 0px;
-  font-family: "Poppins", sans-serif;
+  
+  height: 600px;
+  padding: 0px 0px 50px 0px;
+ 
 }
+
+.recTitle{
+  font-family: "Merienda", cursive;
+}
+
 .inputs {
   display: flex;
   flex-direction: column;
@@ -20,8 +25,11 @@
   align-items: flex-start;
   align-content: stretch;
   width: 600px;
+  height: 40px;
+  margin: 3px;
+  border-radius: 3px;
 }
-.inputs input {
+.inputs  {
   width: 500px;
 }
 .inputs #score {
@@ -54,16 +62,12 @@
   width: 200px;
   height: 40px;
 }
-input {
-  border-radius: 8px;
-  border: none;
-  margin: 10px 10px 0px 10px;
-}
+
 .button {
   font-family: "Merienda", cursive;
   background-color: #f9ffea;
   border-radius: 4px;
-  border: none;
+  border: black solid .5px;
   cursor: pointer;
   padding: 15px;
   margin-top: 18px;
@@ -82,4 +86,11 @@ input {
   border-radius: 10px;
   background-color: transparent;
   backdrop-filter: blur(30px);
+}
+
+
+.bottombtns{
+  display: flex;
+  justify-items: space-between;
+  
 }

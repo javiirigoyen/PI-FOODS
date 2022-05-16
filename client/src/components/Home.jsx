@@ -11,7 +11,9 @@ import { Link } from "react-router-dom";
 import Cards from "./Cards";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import NavBar from './NavBar'
 import "./Home.css";
+import Spinner from './Spinner'
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -60,31 +62,32 @@ export default function Home() {
   }
   return (
     <div>
-      <Link to="/recipe">
-        <button className="button">Create new recipe</button>
+      <h1 className="title"> RECIPE APP </h1>
+      <Link to="/recipe" >
+        <button className="button" >Create new recipe</button>
       </Link>
-      <h1> RECIPE APP </h1>
+      <div className="filterContainer">
+      <NavBar />
       <button
         onClick={(e) => {
           handleClick(e);
         }}
-        className="reload"
+        className="button"
       >
         Reload all recipes
       </button>
-      <div>
-        <select onChange={(e) => handleSort(e)} className="az">
+        <select onChange={(e) => handleSort(e)} className="button">
           <option value="">Filter Alphabetically</option>
           <option value="a-z">A-Z</option>
           <option value="z-a">Z-A</option>
         </select>
-        <select onChange={(e) => handleByScore(e)} className="maxmin">
+        <select onChange={(e) => handleByScore(e)} className="button">
           <option value="">Filter Score</option>
           <option value="asc">Max-Min</option>
           <option value="des">Min-Max</option>
         </select>
 
-        <select onChange={(e) => handleFilterTypes(e)} className="diets">
+        <select onChange={(e) => handleFilterTypes(e)} className="button">
           <option value="">Filter By Diets</option>
           <option value="All">All</option>
           <option value="gluten free">Gluten Free</option>
@@ -99,7 +102,8 @@ export default function Home() {
           <option value="vegetarian">Vegeterian</option>
           <option value="ketogenic">Ketogenic</option>
         </select>
-
+</div>
+<div className="pagandsearchContainer">
         <Paginado
           recipesPerPage={recipesPerPage}
           allRecipes={allRecipes.length}
@@ -124,7 +128,7 @@ export default function Home() {
               />
             ))
           ) : (
-            <h1 className="loading">Loading...</h1>
+            <Spinner />
           )}
         </div>
       </div>

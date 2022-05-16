@@ -81,14 +81,14 @@ export default function RecipeCreate() {
 
   return (
     <div>
-      <Link to="/home">
-        <button className="button">Return</button>
-      </Link>
+     
       <form onSubmit={(e) => handleSubmit(e)} className="Formulario">
+          <h1 className="recTitle">Create your own Recipe</h1>
         <div>
           <div>
             <label>Title:</label>
             <input
+              className="inputs"
               type="text"
               value={`${input.title.charAt(0).toUpperCase()}${input.title.slice(
                 1
@@ -101,6 +101,7 @@ export default function RecipeCreate() {
           <div>
             <label>Summary:</label>
             <input
+              className="inputs"
               type="text"
               value={input.summary}
               title="summary"
@@ -111,6 +112,7 @@ export default function RecipeCreate() {
           <div>
             <label>Image:</label>
             <input
+              className="inputs"
               type="text"
               value={input.image}
               title="image"
@@ -121,6 +123,7 @@ export default function RecipeCreate() {
           <div>
             <label>Health Score:</label>
             <input
+              className="inputs"
               type="number"
               value={input.healthScore}
               title="healthScore"
@@ -133,6 +136,7 @@ export default function RecipeCreate() {
           <div>
             <label>Spoonacular Score:</label>
             <input
+              className="inputs"
               type="number"
               value={input.spoonacularScore}
               title="spoonacularScore"
@@ -145,6 +149,7 @@ export default function RecipeCreate() {
           <div>
             <label>Steps :</label>
             <input
+              className="inputs"
               type="text"
               value={input.steps}
               title="steps"
@@ -161,6 +166,7 @@ export default function RecipeCreate() {
               {diets.map((e) => (
                 <div>
                   <input
+                  className="inputs"
                     type="checkbox"
                     value={e.title}
                     title={e.title}
@@ -172,7 +178,12 @@ export default function RecipeCreate() {
             </div>
           </div>
         </div>
-        <button type="submit">Create Recipe</button>
+        <div className="bottombtns">
+        <Link to="/home">
+        <button className="button">Return</button>
+      </Link>
+        <button type="submit" className="button">Create Recipe</button>
+      </div>
       </form>
     </div>
   );
