@@ -6,14 +6,12 @@ export default function Navbar () {
   return (
     <div className='mySideNav'>
       <Link className='child1' to='/'>
-        Home
+        Landing Page
       </Link>
       <Link className='child2' to='/recipe'>
-        Recipes
+        Create Recipes
       </Link>
-      <Link className='child3' to='/ContactMe'>
-        Contact Me
-      </Link>
+      
    
     </div>
   )

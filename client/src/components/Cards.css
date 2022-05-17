@@ -1,4 +1,5 @@
 .Card {
+ margin-left: 50px;
   background-color: rgb(183, 188, 204);
   margin: 10px;
   padding: 10px;
@@ -8,6 +9,10 @@
   width: 340px;
   height: 400px;
 }
+
+/* .imgCard{
+  padding-left: 70px;
+} */
 .Card:hover {
   color: coral;
   background-color: black;
@@ -31,4 +36,10 @@
   color: antiquewhite;
   background-color: #142f43;
   margin: 10px 0px 10px 0px;
+}
+
+@media screen and (max-width: 400px) {
+  .Card{
+    width: 280px;
+  }
 }

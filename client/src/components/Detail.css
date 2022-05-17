@@ -1,12 +1,13 @@
-.detailContainer {
+.detail {
   border: initial;
   width: 80%;
-  height: 610px;
+  height: auto;
   margin: 15px 0px 0px 200px;
   padding: 5px;
   border-radius: 20px;
   box-shadow: 5px 2px 15px 0px rgb(195, 194, 194);
   background-color: antiquewhite;
+  opacity: .9;
   backdrop-filter: blur(200px);
   display: flex;
   flex-direction: row;
@@ -15,20 +16,21 @@
   align-items: stretch;
   align-content: stretch;
 }
-#buttonReturn {
+.button {
   background-color: #f9ffea;
-  border-radius: 4px;
+  border-radius: 5px;
   border: none;
-  width: 150px;
-  font-size: 30px;
-  margin-top: 10px;
   cursor: pointer;
+  height: 40px;
+  margin-left: 630px;
+  border: black solid 1px;
   padding: 4px;
   transition: all 0.3s ease 0s;
+  color: black;
+  font-size: 20px
 }
-#buttonReturn:hover {
-  background-color: rgb(32, 35, 44);
-  color: antiquewhite;
+.button:hover {
+  background-color: #c68b59;
 }
 .detailContainerUno {
   position: relative;
@@ -66,4 +68,8 @@
   text-decoration: underline;
   font-family: "Caveat", cursive;
   font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+
 }

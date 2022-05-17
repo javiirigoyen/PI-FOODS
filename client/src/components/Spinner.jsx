@@ -1,10 +1,12 @@
 export default function Spinner () {
   return (
     <div>
-      <div>
+      <div  className="spinner">
         <svg
-          width='150px'
-          height='150px'
+          className="spinner"
+          width='300px'
+          height='300px'
+          margin-left='300px'
           version='1.1'
           viewBox='0 0 100 100'
           xmlns='http://www.w3.org/2000/svg'

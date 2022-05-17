@@ -11,6 +11,6 @@ export default function Cards({ title, image, diets, id }) {
       <Link to={"/detail/" + id}>
         <button id="Detail">Detail</button>
       </Link>
-    </div>
+   </div>
   );
 }

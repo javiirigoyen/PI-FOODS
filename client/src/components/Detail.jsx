@@ -24,7 +24,7 @@ export default function Detail() {
           <h2>Summary : </h2>{" "}
           <div dangerouslySetInnerHTML={{ __html: myRecipe[0]?.summary }} />
           <h2>Score : {myRecipe[0]?.healthScore} </h2>
-          <h2>Spoonacular Score : {myRecipe[0]?.spoonacularScore}</h2>
+         {/*  <h2>Spoonacular Score : {myRecipe[0]?.spoonacularScore}</h2> */}
           {myRecipe[0]?.dishTypes ? (
             <h2>Dish Types: {myRecipe[0]?.dishTypes.map((el) => el) + " "}</h2>
           ) : (

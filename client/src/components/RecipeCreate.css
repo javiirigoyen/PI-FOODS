@@ -1,3 +1,80 @@
+/* .Formulario {
+  background-color: #3f3351;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  width: 900px;
+  border-radius: 20px;
+  margin: auto;
+  
+  height: auto;
+  padding: 0px 0px 50px 0px;
+ 
+}
+
+.dietInputs{
+  display: flex  !important;
+ justify-items: space-around !important;
+ align-items: center !important ;
+ flex-wrap: wrap !important;
+ margin-right: 150px;
+ 
+}
+
+.recTitle{
+  font-family: "Merienda", cursive;
+}
+
+.inputsInputs{
+  display: grid  !important;
+  grid-template-columns: repeat(5, 1fr) !important ;
+  width: 600px;
+  height: 40px;
+  margin: 3px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  width: 600px;
+  height: 40px;
+  margin: 3px;
+  border-radius: 3px;
+}
+
+
+
+
+.button {
+  font-family: "Merienda", cursive;
+  background-color: #f9ffea;
+  border-radius: 4px;
+  border: black solid .5px;
+  cursor: pointer;
+  padding: 15px;
+  margin-top: 18px;
+  transition: all 0.3s ease 0s;
+}
+.button:hover {
+  background-color: #e5890a;
+}
+
+
+.bottombtns{
+  display: flex;
+  justify-items: space-around;
+  
+} */
+
+
+
+
+
 .Formulario {
   background-color: #3f3351;
   display: flex;
@@ -8,7 +85,7 @@
   border-radius: 20px;
   margin: auto;
   
-  height: 600px;
+  height: fit-content;
   padding: 0px 0px 50px 0px;
  
 }
@@ -27,9 +104,9 @@
   width: 600px;
   height: 40px;
   margin: 3px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
-.inputs  {
+/* .inputs  {
   width: 500px;
 }
 .inputs #score {
@@ -37,33 +114,27 @@
 }
 .inputs #HealthyFoodLevel {
   width: 60px;
-}
-.tipoDeDietas {
-  background-color: #864879;
-  border-radius: 20px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: 10px 0px 0px 0px;
-}
-.opciones {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  text-align: center;
-  width: 90%;
-}
-.opciones div {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: space-around;
-  width: 200px;
-  height: 40px;
-}
+} */
+/* 
+.inputDiets{
+  height: 60px;
+} */
 
-.button {
+.tipoDeDietas {
+  background-color: #c68b59;
+  opacity: .8;
+  border-radius: 20px;
+ width: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: 100px;
+  padding-right: 50px;
+ 
+}
+.titleDiets{
+  padding-left: 20px;
+}
+.recButton {
   font-family: "Merienda", cursive;
   background-color: #f9ffea;
   border-radius: 4px;
@@ -72,25 +143,52 @@
   padding: 15px;
   margin-top: 18px;
   transition: all 0.3s ease 0s;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
 }
-.button:hover {
+.recButton:hover {
   background-color: #e5890a;
 }
-#title {
-  display: flex;
-  flex-direction: column;
-  border: initial;
-  width: 50%;
-  margin-left: 25%;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: transparent;
-  backdrop-filter: blur(30px);
-}
 
 
-.bottombtns{
+
+.bottomRecBtns{
   display: flex;
   justify-items: space-between;
   
+}
+
+@media screen and (max-width: 600px) {
+  .Formulario{
+    width:200px;
+    height: 600px;
+    margin-top: 50px;
+    margin: 0%;
+    padding: 0%;
+  }
+
+  .inputs{
+    width: 150px;
+   
+  }
+
+  .tipoDeDietas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0%;
+    margin: 0%;
+    text-align: center;
+    padding-bottom: 5px;
+  }
+  .bottomRecBtns{
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  .recButton{
+    font-size: 16px;
+    padding: 5px;
+  }
 }

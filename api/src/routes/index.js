@@ -12,9 +12,9 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
  const getApiInfo = async () => {
-    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=e7657f235b2843599c6fce14557cb78f&addRecipeInformation=true&number=100")
+    const urlApi = await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=efa82ee29b5c47299a1884588ddbc5ac&addRecipeInformation=true&number=100")
     const apiInfo = urlApi.data.results.map(e => {
-       
+     
         return {
             title: e.title,
             id : e.id,

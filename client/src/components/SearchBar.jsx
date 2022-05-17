@@ -23,11 +23,16 @@ export default function SearchBar() {
     <form onSubmit={handleSubmit} className='searchForm'>
       <input
         id="inputName"
+        value={title}
         type="text"
         placeholder="Search Recipes..."
         onChange={(e) => handleInputRecipes(e)}
       />
-      <button type="submit" id="buttonSearch">
+      <button 
+      type="submit" 
+      id="buttonSearch"
+        onClick={e => handleSubmit(e)}
+        >
         Search
       </button>
     </form>

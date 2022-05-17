@@ -24,15 +24,16 @@ const { conn } = require('./src/db.js');
 /* conn.sync({ force: false}).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
-  });
-}); */
-/* conn.sync({ force: true}).then(() => {
-  server.listen(process.env.PORT, () => {
-    console.log("%s listening at 3000"); // eslint-disable-line no-console
-  });
+  });ñ
 }); */
 conn.sync({ force: false}).then(() => {
+  server.listen(process.env.PORT || 3001, () => {
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
+  });
+}); 
+/* conn.sync({ force: false}).then(() => {
     server.listen(PORT, () => {
       console.log(`Listening at port ${PORT}`) // eslint-disable-line no-console
     })
   })
+ */

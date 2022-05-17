@@ -1,6 +1,6 @@
 body {
-  /*  background-image: url("https://img.freepik.com/foto-gratis/interior-cocina-moderna-mesa-madera_23-2148152868.jpg?size=626&ext=jpg"); */
-   background-repeat: no-repeat;
+  /*background-image: url("https://img.freepik.com/foto-gratis/interior-cocina-moderna-mesa-madera_23-2148152868.jpg?size=626&ext=jpg"); */
+  background-repeat: no-repeat;
    background-size: cover;
    background-attachment: fixed;
    width: 100%;
@@ -44,7 +44,7 @@ body {
    align-items: center;
    padding: 10px 30%;
  }
- .button {
+ .buttons {
    background-color: #f9ffea;
    border-radius: 5px;
    border: none;
@@ -54,12 +54,10 @@ body {
    color: black;
    font-size: 20px;
  }
- .button:hover {
+ .buttons:hover {
    background-color: #c68b59;
  }
- #buttonHome {
-   font-family: "Merienda", cursive;
- }
+
  .buttonCreate {
    font-family: "Merienda", cursive;
    margin-left: 96px;
@@ -85,6 +83,8 @@ body {
  
  .pagandsearchContainer{
    margin-top: 30px;
+   display: grid;
+   grid-template-columns: repeat(3 1fr);
  }
  
  .recipeContainer {
@@ -112,3 +112,131 @@ body {
    background-color: transparent;
    backdrop-filter: blur(30px);
  }
+
+  .cards{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   margin-left: 110px;
+   gap: 20px;
+  }
+  
+
+
+
+
+
+
+
+
+
+ body {
+  /*  background-image: url("https://img.freepik.com/foto-gratis/interior-cocina-moderna-mesa-madera_23-2148152868.jpg?size=626&ext=jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  background-color: #e5890a;
+  opacity: 0.85;
+}
+
+.homeButton {
+  background-color: #f9ffea;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease 0s;
+  color: black;
+  font-size: 20px;
+  font-family: 'Merienda', cursive;
+  margin-bottom: 20px;
+}
+.homeButton:hover {
+  background-color: #e5890a;
+}
+#homeCreate {
+  background-color: #f9ffea;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease 0s;
+  color: black;
+  font-size: 20px;
+  font-family: 'Merienda', cursive;
+  margin-bottom: 20px;
+}
+#reloadBtn {
+  background-color: #f9ffea;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease 0s;
+  color: black;
+  font-size: 20px;
+  font-family: 'Merienda', cursive;
+  margin-bottom: 20px;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 400px) {
+  .title {
+    margin: 5%;
+    margin-right: 150px;
+    width: 100%;
+    height: 100px;
+    padding-top: 25px;
+    font-size: 50px;
+  }
+  .filterContainer {
+    flex-direction: column;
+    height: 20px;
+  }
+  .inputs {
+    text-align: center;
+    overflow: hidden;
+  }
+  .searchYPag {
+    margin-top: 180px;
+  }
+  #reloadBtn {
+    margin-top: 160px;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  #homeCreate {
+    margin-top: 20px;
+    font-size: 26px;
+    margin-bottom: 60px;
+    text-align: left;
+  }
+  .homeButton {
+    text-align: center;
+    font-size: 26px;
+  }
+  body{
+    width: 280px;
+    margin-right: 0px;
+    padding: 0%;
+  }
+  .pagination{
+    display: none;
+  }
+  .cards{
+    display: flex;
+    flex-direction: column;
+    padding: 0%;
+    margin: 0%;
+    width: 150px
+  }
+}
